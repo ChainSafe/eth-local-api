@@ -1,0 +1,23 @@
+{
+  "name": "eth-local-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.ts",
+  "dependencies": {
+    "ethers": "^4.0.21"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChainSafeSystems/eth-local-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChainSafeSystems/eth-local-api/issues"
+  },
+  "homepage": "https://github.com/ChainSafeSystems/eth-local-api#readme"
+}
