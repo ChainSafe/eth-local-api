@@ -1,3 +1,5 @@
+import {Transaction} from "ethers/utils";
+
 const ethers = require('ethers');
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +13,7 @@ const { FULL_PATH } = require('./constants');
  * @param {Function} percentLoader - optional percent loader to dispaly to the screen.
  * @returns {boolean}
  */
-export async function createWallet(password: string, name?: string, percentLoader?: Function): boolean {
+export async function createWallet(password: string, name?: string, percentLoader?: Function) {
   const wallet = ethers.Wallet.createRandom();
   const walletName = name === "" ? wallet.address : `${name} - ${wallet.address}`;
   const filePath = path.join(FULL_PATH, walletName);
@@ -43,4 +45,17 @@ export function getWallets() {
     wallets[file.split('-')[1].trim()] = FULL_PATH + '/' + file
   });
   return wallets;
+}
+
+export async function SignTX(tx: Transaction, walletAddress: string, password: string) {
+  // Update wallet list
+  let wallets = getWallets();
+  let keyStore = JSON.parse(fs.readFileSync(wallets[walletAddress]));
+  let privateKey = await ethers.Wallet.fromEncryptedWallet(keyStore, password);
+  let signingKey = new ethers.SigningKey(privateKey.privateKey);
+  // Encode tx
+  let txBytes = ethers.utils.toUtf8Bytes(tx);
+  let txDigest = ethers.utils.keccak256(txBytes);
+  // Sign tx and return it
+  return signingKey.signDigest(txDigest)
 }
