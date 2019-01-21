@@ -6,9 +6,20 @@
   "dependencies": {
     "ethers": "^4.0.21"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node_modules/.bin/tslint -c tslint.json '*/*.ts'",
+    "lint-fix": "node_modules/.bin/tslint -c tslint.json '*/*.ts' --fix"
   },
   "repository": {
     "type": "git",

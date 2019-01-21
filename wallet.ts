@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const { FULL_PATH } = require('./constants');
+
 /**
  * Creates a new wallet and encrypts it in the .eth-local directory
  * @param {string} password - to encrypt the file
@@ -28,7 +29,7 @@ export async function createWallet(password: string, name?: string, percentLoade
     }
     return true;
   });
-};
+}
 
 /**
  * Gets wallets form the eth-local directory.

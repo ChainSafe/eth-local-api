@@ -1,5 +1,5 @@
-const Wallets = require('./wallet');
+const Wallet = require('./wallet');
 
 export default {
-  Wallets,
+  Wallet,
 }
