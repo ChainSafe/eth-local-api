@@ -1,8 +1,20 @@
 {
   "name": "eth-local-api",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.ts",
+  "version": "0.0.6",
+  "description": "API built for the eth-local ecosystem.",
+  "main": "dist/index",
+  "typings": "dist/index",
+  "author": "Gregory Markou",
+  "license": "ISC",
+  "homepage": "https://github.com/ChainSafeSystems/eth-local-api#readme",
+  "scripts": {
+    "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && tsc -p .",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "node_modules/.bin/tslint -c tslint.json '*/*.ts'",
+    "lint-fix": "node_modules/.bin/tslint -c tslint.json '*/*.ts' --fix"
+  },
   "dependencies": {
     "ethers": "^4.0.21"
   },
@@ -16,19 +28,16 @@
     "tslint": "^5.12.1",
     "typescript": "^3.2.4"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/tslint -c tslint.json '*/*.ts'",
-    "lint-fix": "node_modules/.bin/tslint -c tslint.json '*/*.ts' --fix"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ChainSafeSystems/eth-local-api.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/ChainSafeSystems/eth-local-api/issues"
   },
-  "homepage": "https://github.com/ChainSafeSystems/eth-local-api#readme"
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/lib/*"
+  ]
 }

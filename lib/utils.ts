@@ -1,5 +1,5 @@
-const fs = require('fs');
-const { FULL_PATH } = require('./constants');
+import fs = require("fs");
+import {FULL_PATH} from "./constants";
 
 /**
  * Checks to see if the eth-local directory exist.

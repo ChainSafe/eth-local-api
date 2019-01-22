@@ -1,7 +1,7 @@
-const wallet = require('./lib/wallet');
-const utils = require('./lib/utils');
+import wallet = require('./lib/wallet');
+import utils = require('./lib/utils');
 
-export default {
+export {
   wallet,
   utils
 }
