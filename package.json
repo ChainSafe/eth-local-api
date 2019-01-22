@@ -7,6 +7,9 @@
   "license": "ISC",
   "homepage": "https://github.com/ChainSafeSystems/eth-local-api#readme",
   "scripts": {
+    "prepublishOnly": "npm run compile",
+    "compile": "npm run clean && tsc -p .",
+    "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "node_modules/.bin/tslint -c tslint.json '*/*.ts'",
     "lint-fix": "node_modules/.bin/tslint -c tslint.json '*/*.ts' --fix"
@@ -31,4 +34,9 @@
   "bugs": {
     "url": "https://github.com/ChainSafeSystems/eth-local-api/issues"
   },
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/lib"
+  ]
 }
