@@ -1,5 +1,3 @@
-declare const _default: {
-    wallet: any;
-    utils: any;
-};
-export default _default;
+declare const wallet: any;
+declare const utils: any;
+export { wallet, utils };

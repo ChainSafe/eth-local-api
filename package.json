@@ -1,8 +1,9 @@
 {
   "name": "eth-local-api",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "API built for the eth-local ecosystem.",
-  "main": "index.ts",
+  "main": "dist/index",
+  "typings": "dist/index",
   "author": "Gregory Markou",
   "license": "ISC",
   "homepage": "https://github.com/ChainSafeSystems/eth-local-api#readme",
@@ -37,6 +38,6 @@
   "files": [
     "dist/index.js",
     "dist/index.d.ts",
-    "dist/lib"
+    "dist/lib/*"
   ]
 }

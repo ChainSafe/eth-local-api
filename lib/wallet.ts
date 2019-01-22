@@ -1,10 +1,8 @@
+import ethers = require("ethers");
 import {Transaction} from "ethers/utils";
-
-const ethers = require('ethers');
-const fs = require('fs');
-const path = require('path');
-
-const { FULL_PATH } = require('./constants');
+import fs = require("fs");
+import path = require("path");
+import { FULL_PATH } from "./constants";
 
 /**
  * Creates a new wallet and encrypts it in the .eth-local directory
@@ -13,7 +11,7 @@ const { FULL_PATH } = require('./constants');
  * @param {Function} percentLoader - optional percent loader to dispaly to the screen.
  * @returns {boolean}
  */
-export async function createWallet(password: string, name?: string, percentLoader?: Function) {
+export async function createWallet(password: string, name?: string, percentLoader?: void) {
   const wallet = ethers.Wallet.createRandom();
   const walletName = name === "" ? wallet.address : `${name} - ${wallet.address}`;
   const filePath = path.join(FULL_PATH, walletName);
@@ -38,24 +36,24 @@ export async function createWallet(password: string, name?: string, percentLoade
  * @returns {{}}
  */
 export function getWallets() {
-  let files = fs.readdirSync(FULL_PATH);
-  let wallets = {};
+  const files = fs.readdirSync(FULL_PATH);
+  const wallets = {};
   files.map((file, i) => {
     // Get name from 'name - address'
-    wallets[file.split('-')[1].trim()] = FULL_PATH + '/' + file
+    wallets[file.split("-")[1].trim()] = FULL_PATH + "/" + file;
   });
   return wallets;
 }
 
 export async function SignTX(tx: Transaction, walletAddress: string, password: string) {
   // Update wallet list
-  let wallets = getWallets();
-  let keyStore = JSON.parse(fs.readFileSync(wallets[walletAddress]));
-  let privateKey = await ethers.Wallet.fromEncryptedWallet(keyStore, password);
-  let signingKey = new ethers.SigningKey(privateKey.privateKey);
+  const wallets = getWallets();
+  const keyStore = JSON.parse(fs.readFileSync(wallets[walletAddress]));
+  const privateKey = await ethers.Wallet.fromEncryptedWallet(keyStore, password);
+  const signingKey = new ethers.SigningKey(privateKey.privateKey);
   // Encode tx
-  let txBytes = ethers.utils.toUtf8Bytes(tx);
-  let txDigest = ethers.utils.keccak256(txBytes);
+  const txBytes = ethers.utils.toUtf8Bytes(tx);
+  const txDigest = ethers.utils.keccak256(txBytes);
   // Sign tx and return it
-  return signingKey.signDigest(txDigest)
+  return signingKey.signDigest(txDigest);
 }
