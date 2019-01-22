@@ -1,6 +1,6 @@
 {
   "name": "eth-local-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "API built for the eth-local ecosystem.",
   "main": "index.ts",
   "author": "Gregory Markou",
